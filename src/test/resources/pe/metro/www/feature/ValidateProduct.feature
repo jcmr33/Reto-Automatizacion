@@ -2,7 +2,7 @@ Feature: Validate product in the cart
 I as an customer,I want to add a product to the cart.
 
 @TestCase1
-  Scenario Outline: Validate that the product is added to the cart
+  Scenario Outline: Validate that the product is added to the cart.
     Given Enter the website
     When Search the <Product>
     And Add <Product> in shopping cart

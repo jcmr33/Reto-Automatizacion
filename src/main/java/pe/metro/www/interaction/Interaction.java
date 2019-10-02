@@ -1,5 +1,6 @@
 package pe.metro.www.interaction;
 
-public class WaitTime {
+public class Interaction   {
+
 
 }
