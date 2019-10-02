@@ -1,0 +1,38 @@
+group 'pe.metro.www'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+buildscript {
+    ext {
+        serenityVersion = '2.0.58'
+    }
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:${serenityVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'net.serenity-bdd', name: 'serenity-core', version: serenityVersion
+    testCompile group: 'net.serenity-bdd', name: 'serenity-junit', version: serenityVersion
+    testCompile('org.assertj:assertj-core:3.11.1')
+    testCompile('org.slf4j:slf4j-simple:1.7.25')
+    compile group: 'net.serenity-bdd', name: 'serenity-screenplay-webdriver', version: serenityVersion
+    compile group: 'net.serenity-bdd', name: 'serenity-screenplay', version: serenityVersion
+    compile group: 'net.serenity-bdd', name: 'serenity-cucumber', version: '1.9.43'
+    compile group: 'net.serenity-bdd', name: 'serenity-core', version: serenityVersion
+    compile group: 'net.serenity-bdd', name: 'serenity-junit', version: serenityVersion
+}
