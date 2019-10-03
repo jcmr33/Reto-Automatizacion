@@ -31,7 +31,7 @@ public class SearchProduct implements Task {
     @Step("{0} search the product")
     public <T extends Actor> void performAs(T actor) {
     	  actor.attemptsTo(
-    			  WaitUntil.the(MetroHomePage.INPUT_SEARCH, isPresent()),
+    			  WaitUntil.the(MetroHomePage.CANCEL_POPUP, isPresent()),
                   Click.on(MetroHomePage.CANCEL_POPUP),
                 Enter.theValue(nameProduct).into(MetroHomePage.INPUT_SEARCH));
 

@@ -12,4 +12,7 @@ I as an customer,I want to add a product to the cart.
     Examples:
       | Product                                  |
       | LG Smart TV 86" 4K UHD 86UK6570 ThinQ AI |
-     
+      | Haier G32 4.5'' Android 7.1 8GB 8MP Negro|
+      | Drimer Cama Americana Futurepedic King   |
+      | Casabella Zapatera Volterra 16 Pares     |
+      |Pisopak Mueble Tv London                  |
