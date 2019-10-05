@@ -1,13 +1,15 @@
-package pe.metro.www.task;
+package pe.metro.www.tasks;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isPresent;
-
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.waits.WaitUntil;
-import pe.metro.www.userinterface.MetroHomePage;
+import net.thucydides.core.annotations.Step;
+import pe.metro.www.exceptions.ExceptionsMessage;
+import pe.metro.www.userinterfaces.MetroHomePage;
+import pe.metro.www.utils.constants.ErrorMessage;
 
 /**
  * Clase para abrir el minicart
@@ -16,13 +18,13 @@ import pe.metro.www.userinterface.MetroHomePage;
  */
 public class ClicMinicart implements Task{
 
-	
-	 @Override
+
+
+	@Override
+	 @Step("{0} hace clic en el minicart y espera que este en producto agregado")
 	    public <T extends Actor> void performAs(T actor) {
 		 actor.attemptsTo(
-	                Click.on(MetroHomePage.BTN_MINICART),
-	                WaitUntil.the(MetroHomePage.LABEL_NAME_CART, isPresent())
-	        );
+	                Click.on(MetroHomePage.BTN_MINICART));
 	    }
  
 	    public static ClicMinicart openMinicart() {

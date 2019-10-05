@@ -1,4 +1,4 @@
-package pe.metro.www.stepdefinition;
+package pe.metro.www.stepdefinitions;
 
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
@@ -8,23 +8,26 @@ import cucumber.api.java.en.When;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.thucydides.core.annotations.Managed;
-import pe.metro.www.question.TheResult;
-import pe.metro.www.task.AddProduct;
-import pe.metro.www.task.ClicMinicart;
-import pe.metro.www.task.OpenBrowser;
-import pe.metro.www.task.SearchProduct;
-import pe.metro.www.userinterface.MetroHomePage;
+import pe.metro.www.exceptions.ExceptionsMessage;
+import pe.metro.www.questions.TheResult;
+import pe.metro.www.tasks.AddProduct;
+import pe.metro.www.tasks.ClicMinicart;
+import pe.metro.www.tasks.OpenBrowser;
+import pe.metro.www.tasks.SearchProduct;
+import pe.metro.www.userinterfaces.MetroHomePage;
+import pe.metro.www.utils.constants.ErrorMessage;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static org.hamcrest.CoreMatchers.equalTo;
 import org.openqa.selenium.WebDriver;
+
 
 public class ValidateProductStepDefinition {
 
     private Actor juan = Actor.named("Juan");
     private MetroHomePage metroHomePage;
-
+    
     @Managed(driver = "chrome")
-    public WebDriver webDriver;
+    private WebDriver webDriver;
    
     
     @Before
@@ -32,7 +35,6 @@ public class ValidateProductStepDefinition {
         juan.can(BrowseTheWeb.with(webDriver));
       
     }
-
 
     @Given("^Enter the website$")
     public void enterTheWebsite() {
@@ -43,10 +45,11 @@ public class ValidateProductStepDefinition {
     @When("^Search the (.*)$")
     public void searchTheProduct(String nameProduct) {
     	juan.attemptsTo(SearchProduct.theProduct(nameProduct));
+    	
     }
 
-    @And("^Add (.*) in shopping cart$")
-    public void addProductInShoppingCart(String nameProduct) {
+	@And("^Add product in shopping cart$")
+    public void addProductInShoppingCart() {
     	juan.attemptsTo(AddProduct.inShoppingCart());
     }
     @And("^Clic in the minicart$")
@@ -56,7 +59,8 @@ public class ValidateProductStepDefinition {
 
     @Then("^Validate that (.*) is in shopping cart$")
     public void validateThatProductIsInShoppingCart(String expectResult) {
-    	juan.should(seeThat(TheResult.validateProduct(), equalTo(expectResult)));
+    	juan.should(seeThat(TheResult.validateProduct(), equalTo(expectResult))
+    			.orComplainWith(ExceptionsMessage.class, ErrorMessage.PRODUCT_NOT_ADDED));
     }
    
 }
