@@ -12,8 +12,8 @@ import org.junit.runner.RunWith;
  */
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/pe/metro/www/feature/ValidateProduct.feature",
-        glue = "pe.metro.www.stepdefinition",
+        features = "src/test/resources/pe/metro/www/features/ValidateProduct.feature",
+        glue = "pe.metro.www.stepdefinitions",
         tags = "@TestCase1",
         snippets = SnippetType.CAMELCASE
 )
