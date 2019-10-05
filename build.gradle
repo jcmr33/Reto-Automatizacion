@@ -36,3 +36,5 @@ dependencies {
     compile group: 'net.serenity-bdd', name: 'serenity-core', version: serenityVersion
     compile group: 'net.serenity-bdd', name: 'serenity-junit', version: serenityVersion
 }
+
+gradle.startParameter.continueOnFailure= true
